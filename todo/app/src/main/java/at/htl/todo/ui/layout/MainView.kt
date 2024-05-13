@@ -1,6 +1,5 @@
-package at.htl.todo
+package at.htl.todo.ui.layout
 
-import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,12 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import at.htl.todo.ui.theme.TodoTheme
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
+@Singleton
+class MainView {
+    @Inject
+    constructor(){}
+
+    fun buildContent(activity: ComponentActivity) {
+        activity.enableEdgeToEdge()
+        activity.setContent {
             TodoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
