@@ -23,6 +23,10 @@ public class TodoService {
     public void getAll() {
         CompletableFuture
                 .supplyAsync(todoClient::all)
-                .thenAccept(store::setTodos);
+                .thenAccept(store::setTodos)
+                .exceptionally((e) -> {
+                    Log.e(TAG, "Error loading todos", e);
+                    return null;
+                });
     }
 }
