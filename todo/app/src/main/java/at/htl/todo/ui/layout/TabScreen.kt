@@ -1,5 +1,6 @@
 package at.htl.todo.ui.layout
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
@@ -27,7 +28,9 @@ fun TabScreen(model: Model, store: Store?, todoSvc: TodoService?) {
     val tabs = listOf("Home", "Todos")
 
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { store?.unsetTodoView() }
     ) {
         TabRow(
             selectedTabIndex = uiState.selectedTab
@@ -54,9 +57,22 @@ fun TabScreen(model: Model, store: Store?, todoSvc: TodoService?) {
                 )
             }
         }
-        when (tabIndex) {
-            0 -> HomeScreen(model, todoSvc, store)
-            1 -> Todos(model)
+        if (uiState.showTodo && uiState.todo != null) {
+            TodoCard(
+                todo = uiState.todo,
+                store = store
+            )
+        } else if (tabIndex == 1) {
+            Todos(
+                model = model,
+                store = store
+            )
+        } else {
+            HomeScreen(
+                model = model,
+                todoSvc = todoSvc,
+                store = store
+            )
         }
     }
 }
