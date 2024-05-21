@@ -84,8 +84,8 @@ class MainView @Inject constructor() {
                     .padding(8.dp)
                     .clickable { store.unsetTodoView() }
             ){
-                if (viewModel.todoView.showTodo && viewModel.todoView.todo != null) {
-                    TodoView(todo = viewModel.todoView.todo, modifier = Modifier.padding(innerPadding))
+                if (viewModel.uiState.showTodo && viewModel.uiState.todo != null) {
+                    TodoView(todo = viewModel.uiState.todo, modifier = Modifier.padding(innerPadding))
                 } else {
                     Todos(model = viewModel, modifier = Modifier.padding(innerPadding))
                 }

@@ -2,7 +2,7 @@ package at.htl.todo.model;
 
 public class Model {
 
-    public TodoView todoView = new TodoView();
+    public UIState uiState = new UIState();
     public Todo[] todos = new Todo[0];
 
 }

@@ -19,15 +19,15 @@ public class Store extends StoreBase<Model> {
 
     public void setTodoViewTodo(Todo todo) {
         apply(model -> {
-            model.todoView.todo = todo;
-            model.todoView.showTodo = true;
+            model.uiState.todo = todo;
+            model.uiState.showTodo = true;
         });
     }
 
     public void unsetTodoView() {
         apply(model -> {
-            model.todoView.todo = null;
-            model.todoView.showTodo = false;
+            model.uiState.todo = null;
+            model.uiState.showTodo = false;
         });
     }
 
@@ -40,10 +40,14 @@ public class Store extends StoreBase<Model> {
                     }
                 }
 
-                if (model.todoView.todo.id.equals(id)) {
-                    model.todoView.todo.completed = !model.todoView.todo.completed;
+                if (model.uiState.todo.id.equals(id)) {
+                    model.uiState.todo.completed = !model.uiState.todo.completed;
                 }
             });
         }
+    }
+
+    public void selectTab(int tabIndex) {
+        apply(model -> model.uiState.selectedTab = tabIndex);
     }
 }
