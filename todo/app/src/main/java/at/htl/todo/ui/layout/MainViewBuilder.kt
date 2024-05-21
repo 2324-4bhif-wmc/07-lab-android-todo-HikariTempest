@@ -14,15 +14,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MainViewBuilder {
+class MainViewBuilder @Inject constructor() {
     @Inject
     lateinit var store: Store
 
     @Inject
     lateinit var todoSvc: TodoService
-
-    @Inject
-    constructor() {}
 
     fun setContentOfActivity(activity: ComponentActivity) {
         val view = ComposeView(activity)
@@ -31,7 +28,11 @@ class MainViewBuilder {
             Surface(
                 modifier = Modifier.fillMaxSize()
             ) {
-                TabScreen(viewModel, store, todoSvc)
+                TabScreen(
+                    viewModel,
+                    store,
+                    todoSvc
+                )
             }
         }
         activity.setContentView(view)

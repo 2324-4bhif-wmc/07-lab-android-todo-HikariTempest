@@ -22,7 +22,7 @@ import at.htl.todo.ui.theme.TodoTheme
 
 @Composable
 fun TabScreen(model: Model, store: Store?, todoSvc: TodoService?) {
-    var uiState = model.uiState
+    val uiState = model.uiState
     val tabIndex = uiState.selectedTab
     val tabs = listOf("Home", "Todos")
 
@@ -56,7 +56,7 @@ fun TabScreen(model: Model, store: Store?, todoSvc: TodoService?) {
         }
         when (tabIndex) {
             0 -> HomeScreen(model, todoSvc, store)
-            //TODO: 1 -> ToDos(model)
+            1 -> Todos(model)
         }
     }
 }
@@ -76,7 +76,11 @@ fun TabScreenPreview() {
     model.todos = arrayOf(todo(1, "homework"), todo(2, "this is a todo with a very long text which should be truncated"))
 
     TodoTheme {
-        TabScreen(model = model, store = null, todoSvc = null)
+        TabScreen(
+            model = model,
+            store = null,
+            todoSvc = null
+        )
     }
 }
 
