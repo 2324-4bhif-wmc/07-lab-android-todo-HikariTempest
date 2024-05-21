@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
@@ -55,10 +54,10 @@ fun TabScreen(model: Model, store: Store?, todoSvc: TodoService?) {
                 )
             }
         }
-        /*when (tabIndex) {
-            0 -> HomeScreen(model, toDoService, store)//TODO homescreen
-            1 -> ToDos(model)//TODO todo screen
-        }*/
+        when (tabIndex) {
+            0 -> HomeScreen(model, todoSvc, store)
+            //TODO: 1 -> ToDos(model)
+        }
     }
 }
 
