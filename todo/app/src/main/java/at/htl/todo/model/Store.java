@@ -48,6 +48,10 @@ public class Store extends StoreBase<Model> {
     }
 
     public void selectTab(int tabIndex) {
-        apply(model -> model.uiState.selectedTab = tabIndex);
+        apply(model -> {
+            model.uiState.selectedTab = tabIndex;
+            model.uiState.todo = null;
+            model.uiState.showTodo = false;
+        });
     }
 }
