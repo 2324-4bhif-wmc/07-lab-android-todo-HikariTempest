@@ -1,12 +1,14 @@
-package at.htl.todo.util;
+package at.htl.todo.util.config;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
+    static final String TAG  = Config.class.getSimpleName();
     private static Properties properties;
 
     public static void load(Context context) {
@@ -15,7 +17,7 @@ public class Config {
             properties = new Properties();
             properties.load(inputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.i(TAG, "Error loading config", e);
         }
     }
 

@@ -3,10 +3,10 @@ package at.htl.todo.model;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import at.htl.todo.util.store.Store;
+import at.htl.todo.util.store.StoreBase;
 
 @Singleton
-public class ModelStore extends Store<Model> {
+public class ModelStore extends StoreBase<Model> {
 
     @Inject
     ModelStore() {
