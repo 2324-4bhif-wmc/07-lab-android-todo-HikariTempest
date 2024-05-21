@@ -7,7 +7,7 @@ import androidx.activity.ComponentActivity;
 import javax.inject.Inject;
 
 import at.htl.todo.model.TodoService;
-import at.htl.todo.ui.layout.MainView;
+import at.htl.todo.ui.layout.MainViewBuilder;
 import at.htl.todo.util.config.Config;
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -16,7 +16,7 @@ public class MainActivity extends ComponentActivity {
     static final String TAG  = MainActivity.class.getSimpleName();
 
     @Inject
-    MainView mainView;
+    MainViewBuilder mainView;
 
     @Inject
     TodoService todoService;
@@ -28,6 +28,6 @@ public class MainActivity extends ComponentActivity {
         var base_url = Config.getProperty("json.placeholder.baseurl");
         Log.i(TAG, "onCreate: " + base_url);
         todoService.getAll();
-        mainView.buildContent(this);
+        mainView.setContentOfActivity(this);
     }
 }
