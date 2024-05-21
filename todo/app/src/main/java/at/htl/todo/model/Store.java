@@ -6,10 +6,10 @@ import javax.inject.Singleton;
 import at.htl.todo.util.store.StoreBase;
 
 @Singleton
-public class ModelStore extends StoreBase<Model> {
+public class Store extends StoreBase<Model> {
 
     @Inject
-    ModelStore() {
+    Store() {
         super(Model.class, new Model());
     }
 

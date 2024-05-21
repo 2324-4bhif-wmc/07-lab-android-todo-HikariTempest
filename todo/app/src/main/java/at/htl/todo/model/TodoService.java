@@ -12,10 +12,10 @@ public class TodoService {
     static final String TAG = TodoService.class.getSimpleName();
     public static String JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com";
     public final TodoClient todoClient;
-    public final ModelStore store;
+    public final Store store;
 
     @Inject
-    TodoService(RestApiClientBuilder builder, ModelStore store) {
+    TodoService(RestApiClientBuilder builder, Store store) {
         Log.i(TAG, "Creating TodoService with base url: " + JSON_PLACEHOLDER_BASE_URL);
         todoClient = builder.build(TodoClient.class, JSON_PLACEHOLDER_BASE_URL);
         this.store = store;

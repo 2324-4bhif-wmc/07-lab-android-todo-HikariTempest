@@ -33,7 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import at.htl.todo.model.Model
-import at.htl.todo.model.ModelStore
+import at.htl.todo.model.Store
 import at.htl.todo.model.Todo
 import at.htl.todo.ui.theme.TodoTheme
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -44,7 +44,7 @@ import javax.inject.Singleton
 class MainView @Inject constructor() {
 
     @Inject
-    lateinit var store: ModelStore
+    lateinit var store: Store
 
     fun buildContent(activity: ComponentActivity) {
         activity.enableEdgeToEdge()
